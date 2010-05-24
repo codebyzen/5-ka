@@ -1,0 +1,2 @@
+edit static: change name and second page is create - fix it
+settings in admin menu: create

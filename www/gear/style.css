@@ -1,0 +1,184 @@
+body {
+	margin: 0px;
+	font-family: Tahoma;
+	font-size: 10pt;
+	background: #dcdcdc;
+}
+#main {
+	width: 600px;
+	text-align: left;
+	margin: 0px auto;
+	position: relative;
+}
+a {
+	color: #ffaa00;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+	color: #ffaa00;
+}
+input, textarea {
+	width: 95%;
+	border: 1px solid gray;
+	margin: 5px;
+	padding: 5px;
+}
+h1, h2, h3 {
+	font-family: Georgia, serif;
+	font-weight: normal;
+	margin: 0px;
+}
+sup {
+	padding: 5px;
+}
+sup a {
+	margin: 2px;
+	padding: 5px;
+	color: #fff;
+	background: gray;
+}
+sup a:hover {
+	background: #000;
+	text-decoration: none;
+}
+#de {
+	float: right;
+}
+a:hover#de {
+	background: red;
+	text-decoration: none;
+}
+#ed {
+	float: left;
+}
+.head {
+	background: gray;
+	padding: 5px;
+	color: #fff;
+	text-align:center;
+}
+.head h1 {
+	margin: 10px;
+	font-size: 5em;
+}
+ul#menu {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+ul#menu li {
+	display: inline;
+}
+ul#menu li a {
+	padding: 8px;
+	color: #fff;
+	background: #696969;
+}
+ul#menu li a:hover {
+	color: orange;
+	background: #000;
+	text-decoration: none;
+}
+.head form {
+	margin: 0px;
+	padding: 0px;
+}
+.head input {
+	background: gray;
+	color: #fff;
+	border-top: 1px solid #696969;
+}
+.post div {
+	padding: 3px;
+}
+#navi {
+	font-size: 10px;
+	color: gray;
+}
+#navi a {
+	color: gray;
+}
+#navi .prev {
+	float: right;
+}
+#navi .next {
+	float: left;
+}
+a.articleHeader {
+	color:black;
+	text-decoration:none;
+}
+.pglist {
+	margin: 5px;
+}
+.content h2 {
+	font-size: 2.2em;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+.docdate {
+	color: gray;
+	text-align: right;
+	margin-bottom: 0px;
+}
+
+/* snx for Google */
+.b1, .b2, .b3, .b4, .u1, .u2, .u3, .u4 , .f1, .f2, .f3, .f4 {font-size:1px; overflow:hidden; display:block;}
+.b1, .u1, .f1{height:1px; margin:0 5px;}
+.b2, .u2, .f2{height:1px; margin:0 3px;}
+.b3, .u3, .f3{height:1px; margin:0 2px;}
+.b4, .u4, .f4{height:2px; margin:0 1px;}
+.b1, .b2, .b3, .b4 {background:#fff;}
+.u1, .u2, .u3, .u4 {background:gray;}
+.f1, .f2, .f3, .f4 {background:gray;}
+.content {background: #fff; padding: 10px;}
+
+.cmt {
+	padding: 5px;
+	color: #696969;
+}
+.cmt td {
+	vertical-align: top;
+}
+.cmtext {
+	height: 200px;
+}
+#pstf {
+	width: 90%;
+	margin: 0px auto;
+	position: relative;
+}
+#cmtform {
+	width: 75%;
+	margin: 0px auto;
+	position: relative;
+}
+#cmtform .bb {
+	padding: 5px;
+}
+#ava {
+	horizontal-align: left;
+	padding: 5px;
+}
+
+.foot {
+	padding: 5px;
+	margin-bottom:0;
+	margin-top:0;
+	text-align: center;
+	color: #eee;
+	background-color: gray;
+}
+.foot .rss {
+	padding: 5px;
+}
+.foot a {
+	background-color: gray;
+	color: #fff;
+	padding: 5px;
+}
+.foot a:hover {
+	background-color: red;
+	padding: 5px;
+}

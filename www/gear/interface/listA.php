@@ -1,0 +1,1 @@
+<?if (!defined('PKASASS') || PKASASS!=md5('PKASASS')) { echo 'WTF?'; exit(); }	$_listA=listA();	if (count($_listA)>0) {		foreach(listA() as $k => $v) {			echo '<a href="'.$_cfg['www'].'/admin/?act=editA&article='.$k.'">edit</a> | <a href="'.$_cfg['www'].'/admin/?act=delA&article='.$k.'">del</a> -> '. mb_substr($v, 0, 90).'...<br>';		}	}	unset($_listA);	?>
