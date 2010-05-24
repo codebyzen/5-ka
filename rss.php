@@ -31,25 +31,25 @@ if(isset($_REQUEST['short'])) {
 	$_s['short']=0;
 }
 
-echo '<?xml version="1.0" encoding="utf-8"?>';
-
 ?>
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
-<channel>
-<title><?php echo $_s['rss_title']; ?></title>
-<link><?php echo $_s['rss_link']; ?></link>
-<description><?php echo $_s['rss_description']; ?></description>
-<language><?php echo $_s['rss_language']; ?></language>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"> 
+	<channel>
+		<atom:link href="<?=$_s['rss_link'];?>" rel="self" type="application/rss+xml"/> 
+		<title><?php echo $_s['rss_title']; ?></title>
+		<link><?php echo $_s['rss_link']; ?></link>
+		
+		<description><?php echo $_s['rss_description']; ?></description>
+	
+		<language><?php echo $_s['rss_language']; ?></language>
 <?
 if (!empty($_s['rss_logo_file']) && !empty($_s['rss_logo_title']) && !empty($_s['rss_logo_link'])) {
 ?>
-<image>
-<url><?php echo $_s['rss_logo_file']; ?></url>
-<title><?php echo $_s['rss_logo_title']; ?></title>
-<link><?php echo $_s['rss_logo_link']; ?></link>
-</image>
+		<image>
+			<url><?php echo $_s['rss_logo_file']; ?></url>
+			<title><?php echo $_s['rss_logo_title']; ?></title>
+			<link><?php echo $_s['rss_logo_link']; ?></link>
+		</image>
 <? 
-
 } 
 
 	$d = dir('data/articles');
@@ -66,7 +66,8 @@ if (!empty($_s['rss_logo_file']) && !empty($_s['rss_logo_title']) && !empty($_s[
 		$_tmp = explode("\r\n",file_get_contents('./data/articles/'.$posts[$i]));
 		$post['id'] = $posts[$i];
 		$post['title'] = $_tmp[0];
-		$post['text'] = $_tmp[1];
+		array_shift($_tmp);
+		$post['text'] = implode("\r\n",$_tmp);
 		$post_id = $post['id'];
 		unset ($_tmp);
 
@@ -75,7 +76,7 @@ if (!empty($_s['rss_logo_file']) && !empty($_s['rss_logo_title']) && !empty($_s[
 		$post['text'] = str_replace("\r", "\n", $post['text']);
 		$post['text'] = eregi_replace("<cut", "<cut", $post['text']);
 		$post['text'] = eregi_replace("<lj-cut", "<cut", $post['text']);
-		$text = htmlspecialchars($post['text'], ENT_QUOTES);
+		$text = htmlspecialchars(stripslashes($post['text']), ENT_QUOTES);
 
 		if($_s['short']==1) {
 			if(preg_match("#(.*)<cut text=\"(.*)\">#sU", $post['text'], $cut) or preg_match("#(.*)<cut>#sU", $post['text'], $cut))
@@ -97,20 +98,21 @@ if (!empty($_s['rss_logo_file']) && !empty($_s['rss_logo_title']) && !empty($_s[
 
 		$title = htmlspecialchars($post['title'], ENT_QUOTES);
 
-		$date = date("D, d M Y H:i:s ", $post_id + $_s['time_offset'] * 3600).'GMT';
+		$date = date("D, d M Y H:i:s ", $post_id).'GMT';
 
 		//$title=str_replace("&gt;"," /&gt;",$title);
 		//$text=str_replace("&gt;"," /&gt;",$text);
 
 		?>
-<item>
-<title><?php echo $title; ?></title>
-<link><?php echo $_cfg['www'].'/'.$post['id']; ?></link>
-<description><?php echo $text; ?></description>
-<pubDate><?php echo $date; ?></pubDate>
-</item>
+		<item>
+			<title><?php echo $title; ?></title>
+			<link><?php echo $_cfg['www'].'/'.$post['id']; ?></link>
+			<description><?php echo $text; ?></description>
+			<pubDate><?php echo $date; ?></pubDate>
+			<guid isPermaLink="true"><?php echo $_cfg['www'].'/'.$post['id']; ?></guid>
+		</item>
 <?php
 	}
 	?>
-</channel>
+	</channel>
 </rss>
