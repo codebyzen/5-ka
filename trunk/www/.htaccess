@@ -1,0 +1,24 @@
+php_flag display_errors 1
+
+php_value error_reporting 7
+AddDefaultCharset UTF-8
+# CharsetDisable On
+# CharsetDefault windows-1251
+# CharsetSourceEnc windows-1251
+# CharsetRecodeMultipartForms off
+
+Options All -Indexes
+RewriteEngine On
+RewriteBase / 
+
+
+
+RewriteRule ^/?$ index.php [L]
+RewriteRule ^admin/?$ /gear/admin.php [L] 
+RewriteRule ^page/([0-9]+)/?$ index.php?page=$1 [L]
+RewriteRule ^([0-9]+)/?$ index.php?article=$1 [L]
+RewriteRule ^([0-9a-z_-]+)/?$ index.php?static=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
