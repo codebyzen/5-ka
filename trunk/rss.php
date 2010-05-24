@@ -1,5 +1,5 @@
 <?php
-// RSS ìîäóëü
+// RSS Ð¼Ð¾Ð´ÑƒÐ»ÑŒ
 Error_Reporting(E_ALL & ~E_NOTICE);
 
 //header('Pragma: no-cache');
