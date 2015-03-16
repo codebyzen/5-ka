@@ -1,0 +1,1 @@
+blog script with no-mysql
